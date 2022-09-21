@@ -48,8 +48,10 @@ int main() {
 
 	int x, y;
 	char c;
+	
 
-	while (true) {
+	for (int i = 0; i < 5;i++) {
+		int res = 0 ;
 		cout << "두 정수와 연산자를 입력하세요 >> ";
 		cin >> x >> y >> c;
 
@@ -57,20 +59,21 @@ int main() {
 		{
 		case '+':
 			a.setValue(x, y);
-			a.calculate();
+			res=a.calculate();
 			break;
 		case '-':
 			s.setValue(x, y);
-			s.calculate();
+			res = s.calculate();
 			break;
 		case '*':
 			m.setValue(x, y);
-			m.calculate();
+			res = m.calculate();
 			break;
 		case '/':
 			d.setValue(x, y);
-			d.calculate();
+			res = d.calculate();
 			break;
 		}
+		cout << res <<endl;
 	}
 }
