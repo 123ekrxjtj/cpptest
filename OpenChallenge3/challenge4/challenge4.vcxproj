@@ -131,6 +131,7 @@
     <ClInclude Include="WordGame.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="WordGame.cpp" />
   </ItemGroup>
