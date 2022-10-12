@@ -18,7 +18,7 @@ double Circle::getArea() {
 }
 int main() {
 	Circle *circle = new Circle[3];
-	Project1int temp;
+	int temp;
 	int big100 = 0;
 
 	for (int i = 0; i < 3; i++)
