@@ -50,6 +50,45 @@ void Morse::text2Morse(string text, string& morse) {
     }
 }
 
-bool Morse::morse2Text(string morse, string& text) { return true; };
-bool Morse::morseWord2Text(string morse, string& text){ return true; };
-bool Morse::morse2Letter(string morseLetter, char& letter){ return true; };
+bool Morse::morse2Text(string morse, string& text) {
+    string alpha[26] = { "a","b","c","d","e","f", "g","h","i", "j","k","l", "m","n","o",
+        "p","q","r", "s","t","u", "v","w","x", "y","z" };
+    string di[10] = { "0","1","2", "3","4","5", "6","7","8", "9" };
+    string retext="";
+    for (int j = 0; j < morse.size(); ) {
+        int pos = morse.find(" ",j);
+        bool sw = true;
+        string s = morse.substr(j, pos-j);
+        for (int i = 0; i < 26; ++i) {
+            if (s == alphabet[i]) {
+                retext.append(alpha[i]);
+                sw = false;
+                break;
+            }
+        }
+        if (sw) {
+            for (int i = 0; i < 10; ++i) {
+                if (s == digit[i]) {
+                    retext.append(di[i]);
+                    sw = false;
+                    break;
+                }
+            }
+        }
+        if (sw) {
+            if (s == slash) retext += "/";
+            else if (s == question) retext += "?";
+            else if (s == comma) retext += ",";
+            else if (s == period) retext += ".";
+            else if (s == plus) retext += "+";
+            else if (s == equal) retext += "=";
+        }
+        if (morse[pos] == ' ' &&morse[pos+1] == ' ' &&morse[pos+2] == ' ') {
+            retext += " ";
+            pos += 2;
+        }
+        j = pos + 1;
+    }
+    if (retext == text) return true;
+    else return false;
+}
